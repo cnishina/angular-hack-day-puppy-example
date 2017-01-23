@@ -8,15 +8,10 @@
 <br/><hr/><br/>
 
 <div>
-  <!--
-    TODO(you):
-    Look up by puppy name and implement the button click
-  -->
-  <div>lookup:<input/></div>
-  <button>find</button>
-  <div *ngIf="foundPuppy">
-    <!--
-    show fields from the puppy object
-    -->
+  <div>lookup:<input [(ngModel)]="lookup"/></div>
+  <button (click)="findPuppy()">find</button>
+  <div *ngIf="(foundPuppy | async)?.name">
+    <div>name: {{(foundPuppy | async)?.name}}</div>
+    <div>owner: {{(foundPuppy | async)?.owner}}</div>
   </div>
 </div>
