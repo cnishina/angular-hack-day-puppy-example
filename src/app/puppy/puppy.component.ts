@@ -18,6 +18,9 @@ export class PuppyComponent {
     // TODO(you): use update to save the puppy object
     // let observ = this.af.database.object('/path/to/save');
     // use observ.update or observ.set
+    let puppy = new Puppy(this.name);
+    let observ = this.af.database.object('/puppy/' + puppy.name);
+    observ.update(puppy);
     console.log('save clicked, name entered: ', this.name);
   }
 }
