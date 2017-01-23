@@ -10,17 +10,19 @@ import {Puppy} from './puppy.model';
 export class PuppyComponent {
   puppy: Puppy = new Puppy();
 
+  // TODO(you): add variables to lookup the puppy by name and the found puppy
+
   // dependency injected angularfire
   constructor(public af: AngularFire) {}
 
-  name: string;
-
   save() {
-    // TODO(you): use update to save the puppy object
-    // let observ = this.af.database.object('/path/to/save');
-    // use observ.update or observ.set
     let observ = this.af.database.object('/puppy/' + this.puppy.name);
     observ.update(this.puppy);
     console.log('save clicked, name entered: ', this.puppy.name);
+  }
+
+  // TODO(you): find the puppy with af.database.get
+  findPuppy() {
+
   }
 }

@@ -1,10 +1,22 @@
 <div>
-  <!--
-    TODO(you): add an input and button
-    input should use [(ngModel)]="someVariable"
-    button should have an event listener (click)="someFunction"
-  -->
   <div>name:<input [(ngModel)]="puppy.name"/></div>
   <div>owner:<input [(ngModel)]="puppy.owner"/></div>
   <button (click)="save()">save</button>
+</div>
+
+<!-- lazy craig. -->
+<br/><hr/><br/>
+
+<div>
+  <!--
+    TODO(you):
+    Look up by puppy name and implement the button click
+  -->
+  <div>lookup:<input/></div>
+  <button>find</button>
+  <div *ngIf="foundPuppy">
+    <!--
+    show fields from the puppy object
+    -->
+  </div>
 </div>
