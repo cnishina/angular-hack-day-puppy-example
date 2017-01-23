@@ -6,10 +6,12 @@ import {AngularFireModule} from 'angularfire2';
 
 import { AppComponent } from './app.component';
 import { appFirebase } from './app.firebase';
+import { PuppyComponent} from './puppy';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PuppyComponent
   ],
   imports: [
     BrowserModule,
