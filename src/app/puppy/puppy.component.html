@@ -1,21 +1,36 @@
-<div>
-  <div>name:<input #name/></div>
-  <div>owner:<input #owner/></div>
-  <div>photo:<input #photo/></div>
-  <button (click)="save(name.value, owner.value, photo.value)">save</button>
-</div>
+
+<h3>update</h3>
+<table>
+  <tr>
+    <td>name:</td>
+    <td><input #name/></td>
+  </tr>
+  <tr>
+    <td>owner:</td>
+    <td><input #owner/></td>
+  </tr>
+  <tr>
+    <td>photo:</td>
+    <td><input #photo/></td>
+  </tr>
+</table>
+<button (click)="save(name.value, owner.value, photo.value)">save</button>
+
 
 <!-- lazy craig. -->
-<br/><hr/><br/>
-
-<div>
-  <div>lookup:<input #lookup/></div>
-  <button (click)="findPuppy(lookup.value)">find</button>
-  <div *ngIf="(foundPuppy | async)?.name">
-    <div>name: {{(foundPuppy | async)?.name}}</div>
-    <div>owner: {{(foundPuppy | async)?.owner}}</div>
-    <span *ngFor="let photo of foundPuppyPhotos | async">
-      <img [src]="photo.$value" width="200">
-    </span>
-  </div>
+<br/><hr/>
+<h3>lookup</h3>
+<table>
+  <tr>
+    <td>name:</td>
+    <td><input #lookup/></td>
+  </tr>
+</table>
+<button (click)="findPuppy(lookup.value)">find</button>
+<div *ngIf="(foundPuppy | async)?.name">
+  <div>name: {{(foundPuppy | async)?.name}}</div>
+  <div>owner: {{(foundPuppy | async)?.owner}}</div>
+  <span *ngFor="let photo of foundPuppyPhotos | async">
+    <img [src]="photo.$value" width="200">
+  </span>
 </div>
