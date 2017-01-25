@@ -1,17 +1,23 @@
 <div>
-  <div>name:<input [(ngModel)]="puppy.name"/></div>
-  <div>owner:<input [(ngModel)]="puppy.owner"/></div>
-  <button (click)="save()">save</button>
+  <div>name:<input #name/></div>
+  <div>owner:<input #owner/></div>
+  <div>photo:<input #photo/></div>
+  <!--
+    TODO(you): implement save again.
+  -->
+  <!-- <button (click)="save(name.value, owner.value, photo.value)">save</button> -->
 </div>
 
-<!-- lazy craig. -->
 <br/><hr/><br/>
 
 <div>
-  <div>lookup:<input [(ngModel)]="lookup"/></div>
-  <button (click)="findPuppy()">find</button>
+  <div>lookup:<input #lookup/></div>
+  <button (click)="findPuppy(lookup.value)">find</button>
   <div *ngIf="(foundPuppy | async)?.name">
     <div>name: {{(foundPuppy | async)?.name}}</div>
     <div>owner: {{(foundPuppy | async)?.owner}}</div>
+    <!--
+      TODO(you): use *ngFor to display foundPuppy.photo
+    -->
   </div>
 </div>
