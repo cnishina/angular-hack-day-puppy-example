@@ -2,12 +2,10 @@
   <div>name:<input #name/></div>
   <div>owner:<input #owner/></div>
   <div>photo:<input #photo/></div>
-  <!--
-    TODO(you): implement save again.
-  -->
-  <!-- <button (click)="save(name.value, owner.value, photo.value)">save</button> -->
+  <button (click)="save(name.value, owner.value, photo.value)">save</button>
 </div>
 
+<!-- lazy craig. -->
 <br/><hr/><br/>
 
 <div>
@@ -16,8 +14,8 @@
   <div *ngIf="(foundPuppy | async)?.name">
     <div>name: {{(foundPuppy | async)?.name}}</div>
     <div>owner: {{(foundPuppy | async)?.owner}}</div>
-    <!--
-      TODO(you): use *ngFor to display foundPuppy.photo
-    -->
+    <span *ngFor="let photo of foundPuppyPhotos | async">
+      <img [src]="photo.$value" width="200">
+    </span>
   </div>
 </div>

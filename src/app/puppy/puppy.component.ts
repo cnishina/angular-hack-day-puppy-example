@@ -28,22 +28,28 @@ export class PuppyComponent {
       });
     }
 
-
+    // Add a photo list
     if (photo) {
       let photoObserv = this.af.database.list('/puppy/' + name + '/photo');
       photoObserv.subscribe(list => {
-        // TODO(you): Add a photo to the list, if the item does not exist
-        // push them onto the list then update
+        let found = false;
+        list.forEach(item => {
+          if (item.$value === photo) {
+            found = true;
+          }
+        });
+        if (!found) {
+          photoObserv.push(photo);
+        }
       });
     }
 
     console.log('saved on click.');
   }
 
-
   findPuppy(lookup: string) {
     console.log(lookup);
     this.foundPuppy = this.af.database.object('/puppy/' + lookup);
-    // TODO(you): get an observable list 'findPuppyPhotos' with af.database.list
+    this.foundPuppyPhotos = this.af.database.list('/puppy/' + lookup + '/photo');
   }
 }
