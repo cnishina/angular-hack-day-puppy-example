@@ -1,19 +1,29 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AngularFire, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2';
 
 import {Puppy} from './puppy.model';
+import {AuthService, Profile} from '../shared';
 
 @Component({
   selector: 'puppy-root',
   templateUrl: './puppy.component.html',
 })
-export class PuppyComponent {
+export class PuppyComponent implements OnInit {
   puppy: Puppy;
   foundPuppy: FirebaseObjectObservable<Puppy>;
   foundPuppyPhotos: FirebaseListObservable<string[]>;
+  profile: Profile;
+  lookup: string;
 
   // dependency injected angularfire
-  constructor(public af: AngularFire) {}
+  constructor(public af: AngularFire, public as: AuthService) {}
+
+  ngOnInit() {
+    this.as.authSubscription((profile: Profile) => {
+      // TODO(you): write the call back.
+      // should set/reset values if the subscription changes
+    });
+  }
 
   save(name: string, owner: string, photo: string) {
 
@@ -47,9 +57,9 @@ export class PuppyComponent {
     console.log('saved on click.');
   }
 
-  findPuppy(lookup: string) {
-    console.log(lookup);
-    this.foundPuppy = this.af.database.object('/puppy/' + lookup);
-    this.foundPuppyPhotos = this.af.database.list('/puppy/' + lookup + '/photo');
+  findPuppy() {
+    console.log(this.lookup);
+    this.foundPuppy = this.af.database.object('/puppy/' + this.lookup);
+    this.foundPuppyPhotos = this.af.database.list('/puppy/' + this.lookup + '/photo');
   }
 }

@@ -14,7 +14,8 @@
     <td><input #photo/></td>
   </tr>
 </table>
-<button (click)="save(name.value, owner.value, photo.value)">save</button>
+<button *ngIf="profile" (click)="save(name.value, owner.value, photo.value)">save</button>
+<button *ngIf="!profile" disabled>save</button>
 
 
 <!-- lazy craig. -->
@@ -23,10 +24,11 @@
 <table>
   <tr>
     <td>name:</td>
-    <td><input #lookup/></td>
+    <td><input [(ngModel)]="lookup"/></td>
   </tr>
 </table>
-<button (click)="findPuppy(lookup.value)">find</button>
+<button *ngIf="profile" (click)="findPuppy()">find</button>
+<button *ngIf="!profile" disabled>find</button>
 <div *ngIf="(foundPuppy | async)?.name">
   <div>name: {{(foundPuppy | async)?.name}}</div>
   <div>owner: {{(foundPuppy | async)?.owner}}</div>
