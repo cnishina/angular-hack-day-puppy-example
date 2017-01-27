@@ -20,8 +20,12 @@ export class PuppyComponent implements OnInit {
 
   ngOnInit() {
     this.as.authSubscription((profile: Profile) => {
-      // TODO(you): write the call back.
-      // should set/reset values if the subscription changes
+      this.profile = profile;
+      if(this.profile == null) {
+        this.foundPuppy = null;
+        this.foundPuppyPhotos = null;
+        this.lookup = '';
+      }
     });
   }
 

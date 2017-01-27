@@ -10,12 +10,12 @@ export class AuthService {
   authSubscription(callback: (profile: Profile) => void) {
     this.af.auth.subscribe(user => {
       if (user) {
-        // TODO(you): create a profile, add user info to the profile object
-        //   user.auth.displayName
-        //   user.auth.photoURL
-        // run callback
+        let profile = new Profile();
+        profile.name = user.auth.displayName;
+        profile.imageUrl = user.auth.photoURL;
+        callback(profile);
       } else {
-        // TODO(you): run callback to reset the profile
+        callback(null);
       }
     });
   }

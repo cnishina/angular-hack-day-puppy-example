@@ -1,7 +1,7 @@
-<!--
-  TODO(you):
-  display the login button if the profile is not logged in
-  display the logout button and maybe the profile user name
--->
-<button (click)="login()">login</button>
-<button (click)="logout()">logout</button>
+<div *ngIf="!profile">
+  <button (click)="login()">login</button>
+</div>
+<div *ngIf="profile">
+  Hello, {{profile.name}}.
+  <button (click)="logout()">logout</button>
+</div>

@@ -17,12 +17,11 @@ export class LoginComponent implements OnInit {
     });
   }
 
-
-  // TODO: login with either angular fire or auth service
   login() {
+    this.as.login();
   }
 
-  // TODO: logout with either angular fire or auth service
   logout() {
+    this.as.logout();
   }
 }
